@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ajax获取数据</title>
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+
+<script>
+
+$(function(){
+
+	
+	$('#ajax').click(function(){	
+
+
+		//http://127.0.0.1:8010/api?name=zhangsan&agge=20
+
+		$.get("http://localhost:3000/api",   {name: "zhangsan", age: "20"},
+		  function(data){
+
+		     console.log(data);
+		     
+		  });
+	
+	})
+
+	
+})
+
+</script>
+</head>
+<body>
+	
+	<button id='ajax'>点击ajax请求</button>
+	
+
+</body>
+</html>

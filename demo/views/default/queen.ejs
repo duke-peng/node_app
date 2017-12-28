@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1; user-scalable=no;">
+		<title>图灵机器人</title>
+		<style>
+			*{margin: 0;padding: 0;}
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			#box1{
+				/*width: 300px;*/
+				min-height: 300px;
+				border: 1px solid #000;
+				
+			}
+			#box1 img{
+				display: block;
+				width: 100%;
+				height: 250px;
+			}
+			#queen_bg{
+				background: #eee;
+				padding: 10px;
+			}
+			#queen_bg1 a{
+				display: block;
+				overflow: hidden;
+				text-overflow:ellipsis;
+				white-space: nowrap;
+				padding: 5px;
+			}
+			#queen{
+				/*width: 300px;*/
+				min-height: 30px;
+				max-height: 230px;
+				overflow: auto;				
+				border-radius:5px ;
+				background: #fff;
+				padding: 10px;
+			}
+			
+			
+			#box2{
+				width: 100%;
+				
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				}
+			#my{
+				padding: 10px;
+				display: flex;
+				justify-content:space-around;
+				background: #eee;
+			}
+			#my1{
+				display: block;
+				width: 300px;
+				height: 30px;
+				outline-style: none;
+				border-radius:5px ;
+				padding-left: 3px;
+				
+			}
+			#my button{
+				display: block;
+				width: 50px;
+				margin-left: 5px;
+				border-radius:5px ;
+				outline-style: none;
+				color: #fff;
+			}
+			#queen_bg1{
+				height: 200px;
+				overflow: auto;
+			}
+			
+		</style>
+		   <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+		<!--<script src="jquery.min.js"></script>-->
+		<script>
+			$(function(){
+				function QUEEN(){
+					this.url = "http://www.tuling123.com/openapi/api",
+					this.init=function(){
+						this.KEY()	
+							
+						$("button").eq(0).click(function(){
+							this.get()							
+						}.bind(this))
+	
+					},
+					this.get=function(){  //获取机器人回复
+						$.post(
+							this.url,{
+								"key": "56523f63f2844fbea5401e68184182d2",
+								"info": $("#my1").val(),   
+								"userid":"12345",
+							},
+							function(data){
+								console.log(data)
+								$("#queen_bg1").empty()
+								$("#queen").html(data.text)
+								$("#my1").val("")
+								this.fun(data.text)
+								
+								if(data.list){
+									this.addlist(data.list)
+								}
+								
+								if(data.url){
+									$("<iframe heigth='auto' src="+data.url+"></iframe>").appendTo("#queen_bg1")
+//									$("<img src="+data.url+"></img>").appendTo("#queen_bg1")
+								}
+								
+								
+								
+								
+								
+							}.bind(this)
+						
+						)
+					},
+					this.addlist = function(data){
+
+						for(var k=0;k<data.length;k++){
+						
+							$("<a href="+data[k].detailurl+">"+data[k].article+"</a>").appendTo("#queen_bg1");						
+						}
+					},
+					
+					this.KEY = function(){ //键盘 enter
+						$(window).keydown(function(event){
+							if(event.keyCode==13){
+								this.get()
+							}
+				
+						}.bind(this))
+
+					},
+					this.fun = function(val){ 	//语音输出					
+					   $("#queen_vide").empty()
+					    var zhText = val;  
+//					    zhText = encodeURI(zhText);
+
+					    var url = 'http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=4&text='+zhText;
+					    $("<audio autoplay=autoplay  src='"+url+"'>").appendTo("#queen_vide");
+					}
+				}
+				var queen = new QUEEN()
+				queen.init()
+			})
+		</script>
+	</head>
+	<body>
+		<div id="box1">
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514282878970&di=d1cc347d318a5a3f4c16d8ab2a7a9819&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%253D580%2Fsign%3D237d278fe824b899de3c79305e071d59%2F03afcbef76094b36a7ea1662a2cc7cd98c109dc2.jpg" />
+			<div id="queen_bg">
+				<div id="queen"></div>
+				
+			</div>
+			
+			<div id="queen_vide"></div>
+		</div>
+		
+		<div id="queen_bg1"></div>
+		<div id="box2">
+			<div id="my">
+				
+				
+				 <input type="text" name="my" id="my1" value="" speech x-webkit-speech />
+			
+				<button>发送</button>
+			</div>
+		</div>
+	</body>
+</html>

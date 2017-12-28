@@ -1,0 +1,54 @@
+<%- include  ../../public/header.ejs%>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+
+            <%- include ../../public/aside.ejs%>
+
+
+
+        </div>
+        <div class="col-sm-10">
+            <ol class="breadcrumb">
+                <li class="active">轮播图管理
+                </li>
+                <li class="active">轮播图列表
+                </li>
+            </ol>
+            <div class="panel panel-default">
+              
+			    <div class="panel-heading">
+                  增加轮播图
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive input-form">
+                        <form action="/admin/focus/doAdd" method="post"  enctype="multipart/form-data" >
+                            <ul>
+                                <li>  轮播图名称: <input type="text" name="title"/></li>
+
+                                <li>  图片: <input type="file" name="img"/></li>
+
+                                <li>
+                                    <br/>
+                                    <button type="submit" class="btn btn-default">提交</button>
+                                </li>
+
+                            </ul>
+
+
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>主页</title>
+    <link rel="stylesheet" type="text/css" href="/esayui/css/easyui.css">
+    <link  rel="stylesheet"  href="/esayui/css/demo.css">
+    <link  rel="stylesheet"  href="/esayui/css/icon.css">
+    <link rel ="stylesheet" href="/esayui/css/index.css">
+    <script src="/esayui/js/jquery.min.js"></script>
+    <script src="/esayui/js/jquery.easyui.min.js"></script>
+    <script src="/esayui/js/index_one.js"></script>
+</head>
+
+<body>
+<div id="index_header">
+    <h2>后台管理系统</h2>
+</div>
+<div  id="index_body" >
+    <div class="easyui-layout" style="height:100%;width:100%">
+        <div data-options="region:'west',title:'West',split:true," style="width:200px;height: 100%;overflow: hidden">
+            <div class="easyui-accordion" style="width:200px;"data-options="selected:'false'" >
+        </div>
+        <div data-options="region:'center',title:'center title', fit:'true'"
+             style="padding:0px;;height: 100%;background:#eee;"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+
+    var index = new index_demo()
+    index.init()
+
+</script>

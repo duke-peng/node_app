@@ -1,0 +1,54 @@
+<%- include ../public/header.ejs%>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+
+            <%- include ../public/aside.ejs%>
+
+
+
+        </div>
+        <div class="col-sm-10">
+            <ol class="breadcrumb">
+                <li class="active">管理员管理
+                </li>
+                <li class="active">管理员列表列表
+                </li>
+            </ol>
+            <div class="panel panel-default">
+              
+			    <div class="panel-heading">
+                  增加管理员
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive input-form">
+                        <form action="/admin/doAdd" method="post"  enctype="multipart/form-data" >
+                            <ul>
+                                <li> 管理员名字：<input type="text" name="username"/></li> <br>
+                                <li> 密　　　码：<input type="password" name="password"/ ></li> <br>
+                                <li> 管理员头像：<input type="file" name="img"/></li> <br>
+                                <li> 性　　　别：<input type="text" name="sex"/></li> <br>
+                                <li>
+                                    <br/>
+                                    <button type="submit" class="btn btn-default">提交</button>
+                                </li>
+
+                            </ul>
+
+
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
