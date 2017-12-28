@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -83,6 +83,7 @@
 				height: 200px;
 				overflow: auto;
 			}
+			iframe{width: 100%;height: 100%;}
 			
 		</style>
 		   <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
@@ -118,7 +119,7 @@
 								}
 								
 								if(data.url){
-									$("<iframe heigth='auto' src="+data.url+"></iframe>").appendTo("#queen_bg1")
+									$("<iframe heigth='200px'src="+data.url+"></iframe>").appendTo("#queen_bg1")
 //									$("<img src="+data.url+"></img>").appendTo("#queen_bg1")
 								}
 								
