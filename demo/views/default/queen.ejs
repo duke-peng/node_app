@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -116,10 +116,12 @@
 								
 								
 								if(data.text.startsWith("http")){
+									$("#queen").empty()
 									$(`<a href='${data.text}'>百度</a>`).appendTo("#queen")
 									data.text = "你要的地址收好"
 									this.fun(data.text)
 								}else{
+									$("#queen").empty()
 									$("#queen").html(data.text)
 									this.fun(data.text)
 								}
