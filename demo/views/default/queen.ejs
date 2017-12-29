@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -108,11 +108,23 @@
 								"userid":"12345",
 							},
 							function(data){
-								console.log(data)
+//								console.log(data)
+                               console.log(data.text.startsWith("www"))
 								$("#queen_bg1").empty()
-								$("#queen").html(data.text)
+								
 								$("#my1").val("")
-								this.fun(data.text)
+								
+								
+								if(data.text.startsWith("http")){
+									$(`<a href='${data.text}'>百度</a>`).appendTo("#queen")
+									data.text = "你要的地址收好"
+									this.fun(data.text)
+								}else{
+									$("#queen").html(data.text)
+									this.fun(data.text)
+								}
+								
+								
 								
 								if(data.list){
 									this.addlist(data.list)
@@ -164,7 +176,7 @@
 	</head>
 	<body>
 		<div id="box1">
-			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514282878970&di=d1cc347d318a5a3f4c16d8ab2a7a9819&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%253D580%2Fsign%3D237d278fe824b899de3c79305e071d59%2F03afcbef76094b36a7ea1662a2cc7cd98c109dc2.jpg" />
+			<img src="https://desk-fd.zol-img.com.cn/t_s960x600c5/g2/M00/0C/04/Cg-4WlUd-VeIbpegAA-lGpoUYSMAAAxOQAGGJYAD6Uy901.jpg" />
 			<div id="queen_bg">
 				<div id="queen"></div>
 				
